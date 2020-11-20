@@ -1,21 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, HeaderTitle } from '@react-navigation/stack';
+
+import HomeScreen from './lib/screens/HomeScreen';
+import DetailsScreen from './lib/screens/DetailsScreen';
+import MainDishesScreen from './lib/screens/MainDishesScreen';
+import DessertsScreen from './lib/screens/DessertsScreen';
 
 export default function App() {
+
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Categories"
+          component={HomeScreen}
+          options={
+            ({ navigation }) => ({
+              headerTitleAlign: 'center',
+            })
+          }
+        />
+        <Stack.Screen
+          name="Details"
+          component={DetailsScreen}
+          options={
+            ({ navigation }) => ({
+              headerTitleAlign: 'center',
+            })
+          }
+        />
+        <Stack.Screen
+          name="Main Dishes"
+          component={MainDishesScreen}
+          options={
+            ({ navigation }) => ({
+              headerTitleAlign: 'center',
+            })
+          }
+        />
+        <Stack.Screen
+          name="Desserts"
+          component={DessertsScreen}
+          options={
+            ({ navigation }) => ({
+              headerTitleAlign: 'center',
+            })
+          }
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
